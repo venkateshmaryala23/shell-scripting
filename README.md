@@ -27,6 +27,7 @@ $ bash script.sh
 $ sh script.sh
 
 ```
+```
 1.She-Bang & Components
 2.Print
 3.Variables
