@@ -21,5 +21,5 @@ y=20
 echo ${x}X${y} = 200
 
 #DATE=2021-10-31
-DATE = date +%F
+DATE = $(date +%F)
 echo "good morning, today date is $DATE"
