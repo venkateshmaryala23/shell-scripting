@@ -15,5 +15,5 @@ echo welcome
 # to enable any esc seq we need to enable -e option
 # Also the input should be in quotes , Preferabley double quotes
 
-echo -e "Hello World\nWelcome"
+echo  "Hello World\nWelcome"
 
