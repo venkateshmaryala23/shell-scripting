@@ -43,7 +43,7 @@ echo -e "\e[36mText in Cyan color"
 
 ### Color always follows, When we enable color and its our responsibility to disable it as well, 0 col code is used to disable
 
-echo -e "\e[31;5mText in red color\e[0m"
+echo -e "\e[46;5;198;1mText in thick green color\e[0m"
 echo -e "normal color"
 
 
