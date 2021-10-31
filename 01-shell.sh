@@ -8,4 +8,5 @@ ls -ltr
 
 uptime
 
-watch uptime
+
+
