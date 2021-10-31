@@ -14,3 +14,4 @@ b=abc
 
 echo Value of a = $a
 echo Value of b = $b
+echo Value of a = ${a}
