@@ -34,9 +34,9 @@ echo -e "venkatesh\nMounika"
 
 echo -e "\e[31mText in Red Color"
 echo -e "\e[32mText in Green color"
-echo -e "Text in yello color"
-echo -e "Text in blue color"
-echo -e "Text in Magenta color"
-echo -e "Text in Cyan color"
+echo -e "\e[33mText in yello color"
+echo -e "\e[34mText in blue color"
+echo -e "\e[35mText in Magenta color"
+echo -e "\e[36mText in Cyan color"
 
 
