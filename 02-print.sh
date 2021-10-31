@@ -19,3 +19,5 @@ echo -e "Hello World\nWelcome"
 
 echo -e "word1\tword2"
 
+echo -e "venkatesh\nMounika"
+
