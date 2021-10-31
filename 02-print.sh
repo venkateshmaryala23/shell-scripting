@@ -33,7 +33,7 @@ echo -e "venkatesh\nMounika"
 #Cyan     36
 
 echo -e "\e[31mText in Red Color"
-echo -e "Text in Green color"
+echo -e "\e[32mText in Green color"
 echo -e "Text in yello color"
 echo -e "Text in blue color"
 echo -e "Text in Magenta color"
