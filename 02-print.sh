@@ -39,4 +39,11 @@ echo -e "\e[34mText in blue color"
 echo -e "\e[35mText in Magenta color"
 echo -e "\e[36mText in Cyan color"
 
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+### Color always follows, When we enable color and its our responsibility to disable it as well, 0 col code is used to disable
+
+echo -e "\e[31mText in red color"
+echo -e "normal color"
+
 
