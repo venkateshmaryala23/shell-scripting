@@ -13,7 +13,7 @@ echo 4 = $4
 
 ## * and @ are giving all the arguments
 echo "\e[31m* = $*"
-echo "@ = $@\e[0m"
+echo "@ = $@"
 
 # #denotes number of arguments passed as inputs
 echo "# = $#"
