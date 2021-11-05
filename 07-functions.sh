@@ -7,6 +7,7 @@ function abc() {
   echo this is abc
   echo a in function = $a
   b=20
+  return
   echo 1st argument in function is = $1
   }
   
@@ -19,6 +20,7 @@ function xyz() {
 a=10
 abc $1
 echo b in main program =$b
+echo return  status from Function abc is -- $?
 xyz
 echo 1st argument in main program = $1
 
