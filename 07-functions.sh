@@ -11,7 +11,7 @@ function SaanvithaDetails() {
  name="saanvitha"
  age=5
  class="lkg"
- printf 'I am $name \n my age is $age \n my class is $class'
+ printf "I am $name \n my age is $age \n my class is $class"
 }  
 
 #main program
