@@ -5,17 +5,18 @@
 
 function abc() {
   echo this is abc
+  echo a in function = $a
+  b=20
   }
   
-function SaanvithaDetails() {
- name="saanvitha"
- age=5
- class="lkg"
- printf "I am $name \n my age is $age \n my class is $class"
-}  
+
+function xyz() {
+    echo this is xyz
+}
 
 #main program
+a=10
 abc
-SaanvithaDetails
-
+echo b in main program =$b
+xyz
 
