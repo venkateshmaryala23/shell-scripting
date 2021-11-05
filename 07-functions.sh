@@ -7,7 +7,6 @@ function abc() {
   echo this is abc
   echo a in function = $a
   b=20
-  c
   return
   echo 1st argument in function is = $1
   }
