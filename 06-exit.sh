@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls -ld /boot boot
+ls -ld /boot boot &>/dev/null
 exit
 
 
