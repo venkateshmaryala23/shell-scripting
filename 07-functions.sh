@@ -11,7 +11,7 @@ function SaanvithaDetails() {
  name="saanvitha"
  age=5
  class="lkg"
- echo 'I am $name,\nmy age is $age \nmy class is $class'
+ echo I am $name,\nmy age is $age \nmy class is $class
 }  
 
 #main program
