@@ -1,6 +1,8 @@
 #!/bin/bash
 
-ls -ld /boot boot &>/dev/null
+
+# shellcheck disable=SC1072
+df -Th 1>/tmp/out1
 exit
 
 
