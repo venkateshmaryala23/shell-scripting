@@ -7,6 +7,7 @@ function abc() {
   echo this is abc
   echo a in function = $a
   b=20
+  echo 1st argument in function is = $1
   }
   
 
@@ -19,4 +20,5 @@ a=10
 abc
 echo b in main program =$b
 xyz
+echo 1st argument in main program = $1
 
