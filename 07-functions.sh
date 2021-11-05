@@ -17,7 +17,7 @@ function xyz() {
 
 #main program
 a=10
-abc mounika
+abc $1
 echo b in main program =$b
 xyz
 echo 1st argument in main program = $1
