@@ -6,8 +6,16 @@
 function abc() {
   echo this is abc
   }
+  
+function SaanvithaDetails() {
+ name="saanvitha"
+ age=5
+ class="lkg"
+ echo "I am $name,my age is $age and my class is $class"
+}  
 
 #main program
 abc
+SaanvithaDetails
 
 
