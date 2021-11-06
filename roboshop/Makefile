@@ -3,7 +3,7 @@ help:
 
 ## sed -e "s/####/****/g" sed usage "s is for substitue"
 
-cart: \t\t #### Setup Cart Component
+cart: #### Setup Cart Component
 	@bash components/cart.sh
 
 catalogue: #### Setup catalogue component
