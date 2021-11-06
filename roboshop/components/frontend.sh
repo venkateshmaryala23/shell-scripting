@@ -15,7 +15,6 @@ Stat() {
   fi
 }
 
-
 LOG=/tmp/roboshop.log
 rm -f $LOG
 
