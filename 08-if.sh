@@ -2,7 +2,6 @@
 
 ram
 echo $?
-if [$?==0 ]; then
-  echo "command executed successful"
-
+if [ $? -eq 0 ]; then
+ echo -e "\e[92mcommand executed successfully\e[0m"
 fi
