@@ -25,6 +25,7 @@ yum install nginxx -y &>>$LOG
 Stat $?
 
 exit
+
 Print "Enabling Nginx"
 systemctl enable nginx
 Stat $?
