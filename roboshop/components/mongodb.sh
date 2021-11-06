@@ -11,12 +11,13 @@ yum install -y mongodb-org &>>$LOG
 Stat $?
 
 Print "Enabling Mongod service"
-systemctl enable mongod
+systemctl enable mongod &>>$LOG
 Stat $?
 
 Print "Starting mongd service"
-systemctl start mongod
+systemctl start mongod &>>$LOG
 Stat $?
+
 exit 5
 
 #Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
