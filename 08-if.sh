@@ -2,7 +2,7 @@
 
 ram
 echo $?
-if [ $?==0 ]; then
+if [$?==0 ]; then
   echo "command executed successful"
 
 fi
