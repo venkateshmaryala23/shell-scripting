@@ -18,10 +18,10 @@ Stat() {
 Service(){
   if [ "$1" ==  "active" ]; then
     echo -e "\e[1;32mOK!!!!\e[0m"
-     #echo Service is running
+    echo Service is running!!! &>>"$LOG"
   else
     echo -e "\e[1;31mNOT OK!!!!\e[0m"
-    #echo  Service is not running
+    echo  Service is not running!!!! &>>"$LOG"
   fi
 }
 
