@@ -25,12 +25,12 @@ Stat $?
 
 
 Print "Enabling Nginx"
-systemctl enable nginx
+systemctl enable nginxx
 Stat $?
 
 
 Print "Starting Nginx"
-systemctl start nginx
+systemctl start nginxx
 Stat $?
 
 
