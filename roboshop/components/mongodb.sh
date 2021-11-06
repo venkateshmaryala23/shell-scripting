@@ -13,12 +13,15 @@ Stat() {
     exit 1
   fi
 }
+
+LOG=/tmp/roboshop.log
+rm -rf $LOG
+
 echo -e -n  "Downloading.."
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 Stat $?
 
-LOG=/tmp/roboshop.log
-rm -rf $LOG
+
 
 Print "Installing Mongodb"
 yum install -y mongodb-org &>>$LOG
