@@ -1,7 +1,10 @@
 #!/bin/bash
+Print(){
+  echo -n -e "\e[1m$1\e[0m ....."
 
+}
 
-echo -n -e "\e[1mdownloading\e[0m......"
+Print "Downloading"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 if [ $? -eq 0 ]; then
     echo "success"
@@ -11,7 +14,8 @@ fi
 
 LOG=/tmp/roboshop.log
 rm -rf $LOG
-echo -n -e "\e[1mInstalling Mongodb\e[0m......."
+
+Print "Installing Mongodb"
 yum install -y mongodb-org &>>$LOG
 echo "===================" &>>$LOG
 if [ $? -eq 0 ]; then
@@ -20,14 +24,15 @@ else
   echo "failed"
 fi
 
-echo -n -e "\e[1mEnabling mongo service\e[0m.........."
+Print "Enabling Mongod service"
 systemctl enable mongod
 if [ $? -eq 0 ]; then
   echo "success"
 else
   echo "failed"
 fi
-echo -n -e "\e[1mStarting mongo service\e[0m......"
+
+Print "Starting mongd service"
 systemctl start mongod
 if [ $? -eq 0 ]; then
   echo "success"
