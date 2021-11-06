@@ -1,6 +1,7 @@
 #!/bin/bash
 Print(){
   echo -n -e "\e[1m$1\e[0m ....."
+  echo "===================$1===================" &>>$LOG
 
 }
 
@@ -17,7 +18,7 @@ rm -rf $LOG
 
 Print "Installing Mongodb"
 yum install -y mongodb-org &>>$LOG
-echo "===================" &>>$LOG
+
 if [ $? -eq 0 ]; then
   echo "success"
 else
