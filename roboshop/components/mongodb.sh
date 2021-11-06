@@ -7,15 +7,15 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
 Stat $?
 
 Print "Installing Mongodb"
-yum install -y mongodb-org &>>$LOG
+yum install -y mongodb-org &>>"$LOG"
 Stat $?
 
 Print "Enabling Mongod service"
-systemctl enable mongod &>>$LOG
+systemctl enable mongod &>>"$LOG"
 Stat $?
 
 Print "Starting mongd service"
-systemctl start mongod &>>$LOG
+systemctl start mongod &>>"$LOG"
 Stat $?
 
 exit 5
