@@ -18,4 +18,6 @@ ram
 
 if [ $? -eq 0 ]; then
   echo  executed successfully
+else
+  echo not executed command
 fi
