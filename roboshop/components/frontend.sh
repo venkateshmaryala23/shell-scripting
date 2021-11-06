@@ -6,15 +6,6 @@ Print "Installing Nginx"
 yum install nginx -y &>>"$LOG"
 Stat $?
 
-Print "Enabling Nginx"
-systemctl enable nginx &>>"$LOG"
-Stat $?
-
-Print "Starting Nginx"
-systemctl start nginx &>>"$LOG"
-systemctl --type=service | grep nginx &>>"$LOG"
-Stat $?
-
 Print "checking service status"
 nstatus=$(systemctl is-active nginx.service)
 Service $nstatus
@@ -35,9 +26,14 @@ Print "copy files to Nginx path"
 mv /tmp/frontend-main/static/* /usr/share/nginx/html/.
 Stat $?
 
-#mv frontend-main/* .
-#mv static/* .
-#rm -rf frontend-master static README.md
-#mv localhost.conf /etc/nginx/default.d/roboshop.conf
+Print "copy nginx roboshop config file"
+cp /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>"$LOG"
 
-#systemctl restart nginx
+Print "Enabling Nginx"
+systemctl enable nginx &>>"$LOG"
+Stat $?
+
+Print "Starting Nginx"
+systemctl start nginx &>>"$LOG"
+systemctl --type=service | grep nginx &>>"$LOG"
+Stat $?
