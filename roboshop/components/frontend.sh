@@ -19,12 +19,11 @@ Print "checking service status"
 nstatus=$(systemctl is-active nginx.service)
 Service $nstatus
 
+Print "Download Html pages"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+Stat $?
 
 exit
-
-
-
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
 
 cd /usr/share/nginx/html
 rm -rf *
