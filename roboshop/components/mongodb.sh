@@ -14,9 +14,9 @@ Print "Enabling Mongod service"
 systemctl enable mongod &>>"$LOG"
 Stat $?
 
-Print "Starting mongd service"
-systemctl start mongod &>>"$LOG"
-systemctl --type=service | grep mongd &>>"$LOG"
+Print "Starting mongodb service"
+systemctl start mongodb &>>"$LOG"
+systemctl --type=service | grep mongod &>>"$LOG"
 Stat $?
 
 Print "checking service status"
