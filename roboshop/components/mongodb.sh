@@ -5,7 +5,7 @@ Print(){
 
 }
 
-Print "Downloading"
+echo -e -n  "Downloading.."
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 if [ $? -eq 0 ]; then
     echo "success"
