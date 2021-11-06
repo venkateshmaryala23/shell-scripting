@@ -15,7 +15,7 @@ systemctl enable mongod &>>"$LOG"
 Stat $?
 
 Print "Starting mongodb service"
-systemctl start mongodb &>>"$LOG"
+systemctl start mongod &>>"$LOG"
 systemctl --type=service | grep mongod &>>"$LOG"
 Stat $?
 
