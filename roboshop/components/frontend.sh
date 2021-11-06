@@ -7,6 +7,7 @@ Print() {
 #echo -e "\e[1mInstalling Nginx...........\e[0m"
 Print "Installing Nginx"
 yum install nginx -y
+echo $?
 
 #echo -e "\e[1mEnabling Nginx\e[0m"
 Print "Enabling Nginx"
