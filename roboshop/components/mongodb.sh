@@ -12,6 +12,7 @@ fi
 LOG=/tmp/roboshop.log
 echo -n -e "\e[1mInstalling Mongodb\e[0m......."
 yum install -y mongodb-org &>>$LOG
+echo "===================" &>>$LOG
 if [ $? -eq 0 ]; then
   echo "success"
 else
