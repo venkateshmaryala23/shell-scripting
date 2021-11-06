@@ -4,9 +4,13 @@ Print() {
   echo -e "\e[92m$1\e[0m"
 }
 
+LOG=/tmp/roboshop.log
+rm -f $LOG
+
 #echo -e "\e[1mInstalling Nginx...........\e[0m"
 Print "Installing Nginx"
-yum install nginx -y
+yum install nginx -y &>>$LOG
+echo $LOG
 
 #echo -e "\e[1mEnabling Nginx\e[0m"
 Print "Enabling Nginx"
