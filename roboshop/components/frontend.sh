@@ -16,9 +16,9 @@ systemctl --type=service | grep nginx
 Stat $?
 
 Print "checking service status"
-status="systemctl is-active nginx.service"
-$status
-if [ '$status' == 'active' ]; then
+#status="systemctl is-active nginx.service"
+#$status
+if [ '$(systemctl is-active nginx.service)' == 'active' ]; then
   echo "Service is running"
 fi
 
