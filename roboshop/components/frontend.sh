@@ -20,8 +20,6 @@ status="systemctl is-active nginx.service"
 $status
 if [ '$status' == 'active' ]; then
   echo "Service is running"
-else
-  echo "service is not running "
 fi
 
 exit
