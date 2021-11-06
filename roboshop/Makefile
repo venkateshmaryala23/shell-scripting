@@ -1,6 +1,6 @@
 help:
 	 @IFS=$$'\n' ; \
-        help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//'`); \
+        help_lines=(`fgrep -h "####" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//'`); \
         for help_line in $${help_lines[@]}; do \
             IFS=$$'#' ; \
             help_split=($$help_line) ; \
