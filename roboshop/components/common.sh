@@ -15,5 +15,13 @@ Stat() {
   fi
 }
 
+Service(){
+  if [ "$1" ==  "active" ]; then
+     echo Service is running
+  else
+    echo  Service is not running
+  fi
+}
+
 LOG=/tmp/roboshop.log
 rm -f $LOG
