@@ -13,3 +13,7 @@ if [ $UID -eq 0 ]; then
 else
   echo you are a non root user
 fi
+
+if [ $? -eq 0 ]; then
+  echo  executed successfully
+fi
