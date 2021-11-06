@@ -21,7 +21,7 @@ rm -f $LOG
 
 
 Print "Installing Nginx"
-yum install nginxx -y &>>$LOG
+yum install nginx -y &>>$LOG
 Stat $?
 
 
