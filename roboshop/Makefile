@@ -1,5 +1,7 @@
 help:
-	@grep '####' Makefile| grep -v grep | sed -e "s/####/****/g"
+	@grep '####' Makefile| grep -v grep | sed -e "s/####//g"
+
+## sed -e "s/####/****/g" sed usage "s is for substitue"
 
 cart: #### Setup Cart Component
 	@bash components/cart.sh
