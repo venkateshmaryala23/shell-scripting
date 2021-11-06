@@ -11,7 +11,7 @@ Stat() {
   else
     echo -e "\e[1;31mFAILURE\e[0m"
     echo -e "\e[1;33mScript is failed and plese check the details in $LOG file\e[0m"
-    exit 0
+    exit 1
   fi
 }
 
@@ -34,6 +34,7 @@ Stat $?
 Print "Starting Nginx"
 systemctl start nginx
 Stat $?
+
 exit
 
 
