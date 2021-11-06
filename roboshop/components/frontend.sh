@@ -6,10 +6,6 @@ Print "Installing Nginx"
 yum install nginx -y &>>"$LOG"
 Stat $?
 
-Print "checking service status"
-nstatus=$(systemctl is-active nginx.service)
-Service $nstatus
-
 Print "Downloading Html pages"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>"$LOG"
 Stat $?
@@ -37,3 +33,7 @@ Print "Starting Nginx"
 systemctl start nginx &>>"$LOG"
 systemctl --type=service | grep nginx &>>"$LOG"
 Stat $?
+
+Print "checking service status"
+nstatus=$(systemctl is-active nginx.service)
+Service $nstatus
