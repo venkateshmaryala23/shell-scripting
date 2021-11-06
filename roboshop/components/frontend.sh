@@ -20,7 +20,7 @@ LOG=/tmp/roboshop.log
 rm -f $LOG
 
 
-Print "Installing Nginx"
+Print "Installing Nginxx"
 yum install nginx -y &>>$LOG
 Stat $?
 
