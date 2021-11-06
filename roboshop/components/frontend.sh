@@ -8,15 +8,15 @@ Print() {
 LOG=/tmp/roboshop.log
 rm -f $LOG
 
-#echo -e "\e[1mInstalling Nginx...........\e[0m"
+
 Print "Installing Nginx"
 yum install nginx -y &>>$LOG
 
-#echo -e "\e[1mEnabling Nginx\e[0m"
+
 Print "Enabling Nginx"
 systemctl enable nginx
 
-#echo -e "\e[1mStarting Nginx\e[0m"
+
 Print "Starting Nginx"
 systemctl start nginx
 
