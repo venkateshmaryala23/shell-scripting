@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Print() {
-  echo -e "\e[42m$1\e[0m"
+  echo -e "\e[92m$1\e[0m"
 }
 
 #echo -e "\e[1mInstalling Nginx...........\e[0m"
