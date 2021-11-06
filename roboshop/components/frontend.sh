@@ -12,7 +12,7 @@ Stat $?
 
 Print "Starting Nginx"
 systemctl start nginx &>>"$LOG"
-systemctl --type=service | grep nginx
+systemctl --type=service | grep nginx &>>"$LOG"
 Stat $?
 
 Print "checking service status"
