@@ -1,14 +1,16 @@
 #!/bin/bash
-Print(){
+Print() {
   echo -n -e "\e[1m$1\e[0m ....."
-  echo "===================$1===================" &>>$LOG
+  echo -e "\n\e[36m==============================$1==============================\e[0m" >>$LOG
 }
 
-Stat () {
+Stat() {
   if [ $1 -eq 0 ]; then
-      echo "success"
+   echo -e "\e[1;32mSUCCESS\e[0m"
   else
-      echo "failed"
+    echo -e "\e[1;31mFAILURE\e[0m"
+    echo -e "\e[1;33mScript is failed and plese check the details in $LOG file\e[0m"
+    exit 1
   fi
 }
 echo -e -n  "Downloading.."
