@@ -1,6 +1,6 @@
 #!/bin/bash
 
-uptime
+ram
 echo $?
 if [ $?==0 ]; then
   echo "command executed successful"
