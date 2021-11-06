@@ -21,8 +21,6 @@ Print "Downloading"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 Stat $?
 
-
-
 Print "Installing Mongodb"
 yum install -y mongodb-org &>>$LOG
 Stat $?
@@ -34,7 +32,6 @@ Stat $?
 Print "Starting mongd service"
 systemctl start mongod
 Stat $?
-
 exit 5
 
 #Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
