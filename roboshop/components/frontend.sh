@@ -28,7 +28,7 @@ rm -rf  /usr/share/nginx/html/*
 Stat $?
 
 Print "Extract Frontend Archive"
-unzip -d /usr/share/nginx/html /tmp/frontend.zip
+unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>"$LOG"
 Stat $?
 
 #mv frontend-main/* .
