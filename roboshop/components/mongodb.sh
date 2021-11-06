@@ -1,12 +1,14 @@
 #/bin/bash
 
 
-echo -e "\e[1mdownloading\e[0m"
+echo -n -e "\e[1mdownloading\e[0m......"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
-echo $?
-exit
+if [ $? -eq 0 ]; then
+    echo "success"
+fi
 
-Install Mongo & Start Service.
+exit
+echo -e "\e[1mInstalling Mongodb\e[0m"
 # yum install -y mongodb-org
 # systemctl enable mongod
 # systemctl start mongod
