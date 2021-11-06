@@ -18,22 +18,17 @@ Stat() {
 LOG=/tmp/roboshop.log
 rm -f $LOG
 
-
 Print "Installing Nginx"
 yum install nginx -y &>>$LOG
 Stat $?
-
-
 
 Print "Enabling Nginx"
 systemctl enable nginx
 Stat $?
 
-
 Print "Starting Nginx"
 systemctl start nginx
 Stat $?
-
 exit
 
 
