@@ -14,6 +14,8 @@ else
   echo you are a non root user
 fi
 
+ram
+
 if [ $? -eq 0 ]; then
   echo  executed successfully
 fi
