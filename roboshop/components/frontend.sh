@@ -8,8 +8,6 @@ Print() {
 Stat() {
   if [ $1 -eq 0 ]; then
    echo -e "\e[1;32mSUCCESS\e[0m"
-  elif [ $1 -eq 1 ]; then
-    echo -e "\e[1:34mpackage name is wrong\e[0m"
   else
     echo -e "\e[1;31mFAILURE\e[0m"
     echo -e "\e[1;33mScript is failed and plese check the details in $LOG file\e[0m"
