@@ -20,28 +20,15 @@ rm -rf $LOG
 
 Print "Installing Mongodb"
 yum install -y mongodb-org &>>$LOG
-
-if [ $? -eq 0 ]; then
-  echo "success"
-else
-  echo "failed"
-fi
+Stat $?
 
 Print "Enabling Mongod service"
 systemctl enable mongod
-if [ $? -eq 0 ]; then
-  echo "success"
-else
-  echo "failed"
-fi
+Stat $?
 
 Print "Starting mongd service"
 systemctl start mongod
-if [ $? -eq 0 ]; then
-  echo "success"
-else
-  echo "failed"
-fi
+Stat $?
 
 exit 5
 
