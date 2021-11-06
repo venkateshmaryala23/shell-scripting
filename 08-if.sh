@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ram
-echo $?
-if [ $? -eq 0 ]; then
- echo -e "\e[92mcommand executed successfully\e[0m"
+read -p 'enter user name :' username
+
+if [ "$username" == "root" ]; then
+  echo "Hey, You are root user"
 fi
