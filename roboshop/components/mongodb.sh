@@ -10,6 +10,7 @@ else
 fi
 
 LOG=/tmp/roboshop.log
+rm -rf $LOG
 echo -n -e "\e[1mInstalling Mongodb\e[0m......."
 yum install -y mongodb-org &>>$LOG
 echo "===================" &>>$LOG
