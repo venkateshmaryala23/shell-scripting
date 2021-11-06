@@ -24,7 +24,7 @@ mstatus=$(systemctl is-active mongod.service)
 Service $mstatus
 
 
-exit 5
+exit
 
 #Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
 #Config file: /etc/mongod.conf
