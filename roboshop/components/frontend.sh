@@ -3,15 +3,16 @@
 source components/common.sh
 
 Print "Installing Nginx"
-yum install nginx -y &>>$LOG
+yum install nginx -y &>>"$LOG"
 Stat $?
 
 Print "Enabling Nginx"
-systemctl enable nginx &>>$LOG
+systemctl enable nginx &>>"$LOG"
 Stat $?
 
 Print "Starting Nginx"
-systemctl start nginx &>>$LOG
+systemctl start nginx &>>"$LOG"
+systemctl --type=service | grep nginx
 Stat $?
 
 
