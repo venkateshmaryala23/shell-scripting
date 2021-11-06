@@ -1,5 +1,5 @@
 help:
-	@grep '####' Makefile| grep -v grep | sed -e "s/####//\t\t"
+	@grep '####' Makefile| grep -v grep | sed -e "s/####//\t"
 
 cart: #### Setup Cart Component
 	@bash components/cart.sh
