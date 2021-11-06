@@ -1,13 +1,22 @@
 help:
-	@grep '####' Makefile| grep -v grep | sed -e "s/####//"
+	 @IFS=$$'\n' ; \
+        help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//'`); \
+        for help_line in $${help_lines[@]}; do \
+            IFS=$$'#' ; \
+            help_split=($$help_line) ; \
+            help_command=`echo $${help_split[0]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
+            help_info=`echo $${help_split[2]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
+            printf "%-30s %s\n" $$help_command $$help_info ; \
+        done
 
-cart: ####\t Setup Cart Component
+
+cart: #### Setup Cart Component
 	@bash components/cart.sh
 
 catalogue: #### Setup catalogue component
 	@bash components/catalogue.sh
 
-user: ####\t Setup user component
+user: #### Setup user component
 	@bash components/user.sh
 
 shipping: #### Setup shipping component
@@ -19,10 +28,10 @@ payment: #### Setup payment component
 frontend: #### Setup frontend component
 	@bash components/frontend.sh
 
-mysql: ####\t Setup MySQL component
+mysql: #### Setup MySQL component
 	@bash components/mysql.sh
 
-redis: ####\t Setup Redis component
+redis: #### Setup Redis component
 	@bash components/redis.sh
 
 rabbbitmq: #### Setup Rabbitmq component
