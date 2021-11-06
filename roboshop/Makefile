@@ -11,7 +11,7 @@ help:
 
 git-pull:
 	@echo ------+pulling git code+------
-	@git pull &>/dev/null
+	@git pull &>>/dev/null
 
 cart: git-pull ## Setup Cart Component
 	@bash components/cart.sh
