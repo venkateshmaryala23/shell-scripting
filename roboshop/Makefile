@@ -8,6 +8,7 @@ help:
             help_info=`echo $${help_split[2]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
             printf "%-15s %s\n" $$help_command $$help_info ; \
         done
+
 git-pull:
 	@echo ------+pulling git code+------
 	@git pull &>/dev/null
