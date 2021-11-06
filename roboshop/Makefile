@@ -1,5 +1,5 @@
 help:
-	@grep '####' Makefile
+	@grep '####' Makefile| grep grep
 
 cart: #### Setup Cart Component
 	@bash components/cart.sh
