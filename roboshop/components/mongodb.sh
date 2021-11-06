@@ -16,8 +16,12 @@ Stat $?
 
 Print "Starting mongd service"
 systemctl start mongod &>>"$LOG"
-systemctl --type=service | grep mongd
+systemctl --type=service | grep mongd &>>"$LOG"
 Stat $?
+
+Print "checking service status"
+mstatus=$(systemctl is-active mongod.service)
+Service $mstatus
 
 exit 5
 
