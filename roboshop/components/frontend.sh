@@ -20,17 +20,17 @@ rm -f $LOG
 
 
 Print "Installing Nginx"
-yum install nginxx -y &>>$LOG
+yum install nginx -y &>>$LOG
 Stat $?
 
 
 Print "Enabling Nginx"
-systemctl enable nginxx
+systemctl enable nginx
 Stat $?
 
 
 Print "Starting Nginx"
-systemctl start nginxx
+systemctl start nginx
 Stat $?
 
 
