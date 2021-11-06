@@ -5,7 +5,7 @@ Print() {
 }
 
 LOG=/tmp/roboshop.log
-#rm -f $LOG
+rm -f $LOG
 
 #echo -e "\e[1mInstalling Nginx...........\e[0m"
 Print "Installing Nginx"
