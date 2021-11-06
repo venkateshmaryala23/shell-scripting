@@ -17,8 +17,8 @@ Stat $?
 
 Print "checking service status"
 service="systemctl is-active nginx.service"
-
-if [ "$service" ==  "active" ]; then
+echo $service
+if [ "$(systemctl is-active nginx.service)" ==  "active" ]; then
    echo Service is running
 else
   echo  Service is not running
