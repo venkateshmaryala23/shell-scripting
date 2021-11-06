@@ -11,7 +11,7 @@ systemctl enable nginx &>>"$LOG"
 Stat $?
 
 Print "Starting Nginx"
-systemctl stop nginx &>>"$LOG"
+##systemctl start nginx &>>"$LOG"
 systemctl --type=service | grep nginx &>>"$LOG"
 Stat $?
 
