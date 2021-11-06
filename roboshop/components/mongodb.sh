@@ -17,7 +17,7 @@ Stat() {
 LOG=/tmp/roboshop.log
 rm -rf $LOG
 
-echo -e -n  "Downloading.."
+Print "Downloading.."
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 Stat $?
 
