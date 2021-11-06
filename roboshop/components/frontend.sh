@@ -10,6 +10,7 @@ LOG=/tmp/roboshop.log
 #echo -e "\e[1mInstalling Nginx...........\e[0m"
 Print "Installing Nginx"
 yum install nginx -y &>>$LOG
+echo "***************************" &>>$LOG
 echo $LOG
 
 #echo -e "\e[1mEnabling Nginx\e[0m"
