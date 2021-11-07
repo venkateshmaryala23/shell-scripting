@@ -21,7 +21,7 @@ else
     elif [ $x == 64 ]; then
       echo "Instance is already exist but its status is stopping"
     elif [ $x == 80 ]; then
-      echo "Instance is already exist but its status is stopped"
+      echo "Instance is already exist but the instance is stopped"
       fi
   done
 fi
