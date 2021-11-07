@@ -7,6 +7,7 @@ ec2_state_code=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |j
 #echo $ec2_state_code
 
 if [ $COUNT -eq 0 ]; then
+     echo "There is no instance existed.... so creating instance for your $1 ec2 instance"
      aws ec2 run-instances --image-id ami-0dc863062bc04e1de --instance-type t3.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" | jq
 else
   #echo "Instance already exists"
