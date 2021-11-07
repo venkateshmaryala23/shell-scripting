@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=cart |jq ".Reservations[].Instances[].InstanceId" | wc -l)
+COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].InstanceId" | wc -l)
 
 echo $COUNT
 
