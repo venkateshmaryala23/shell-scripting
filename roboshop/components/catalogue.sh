@@ -11,6 +11,7 @@ if [ $? -eq 0 ]; then
   echo User RoboShop already exists &>>"$LOG"
 else
   useradd roboshop &>>"$LOG"
+  echo User roboshop created &>>"$LOG"
 fi
 Stat $?
 
