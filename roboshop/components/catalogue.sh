@@ -36,9 +36,10 @@ cd /home/roboshop/catalogue
 npm install --unsafe-perm &>>"$LOG"
 Stat $?
 
-exit 50
-NOTE: We need to update the IP address of MONGODB Server in systemd.service file
-Now, lets set up the service with systemctl.
+Print "Fix App Permissions"
+chown roboshop:roboshop /home/roboshop
+Stat $?
+
 
 # mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 # systemctl daemon-reload
