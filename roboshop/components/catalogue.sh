@@ -27,7 +27,6 @@ Print "Extracting  Catalogue"
 unzip -o -d /home/roboshop /tmp/catalogue.zip &>>"$LOG"
 Stat $?
 
-exit
 Print "copy content"
 mv /home/roboshop/catalogue-main /home/roboshop/catalogue
 Stat $?
