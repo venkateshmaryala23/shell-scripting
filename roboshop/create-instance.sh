@@ -2,7 +2,7 @@
 
 COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
 
-ec2_state_code=$(aws ec2 describe-instances --filters Name=tag:Name,Values=cart |jq ".Reservations[].Instances[].State.Code")
+ec2_state_code=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].State.Code")
 
 echo $ec2_state_code
 
