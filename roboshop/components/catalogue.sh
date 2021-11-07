@@ -33,7 +33,7 @@ Stat $?
 
 Print "Install NodeJs dependencies"
 cd /home/roboshop/catalogue
-npm install g module --unsafe-perm &>>"$LOG"
+npm install --unsafe-perm &>>"$LOG"
 Stat $?
 
 exit 50
