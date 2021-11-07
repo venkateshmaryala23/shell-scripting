@@ -14,14 +14,15 @@ else
     echo $x
     if [ $x == 0 ]; then
       echo "Instance is exists but it is in pending status"
-    elif [ $x == 16 ];
+    elif [ $x == 16 ]; then
       echo  "Instance is already exists, It is in running state"
-    elif [ $x == 32 ];
+    elif [ $x ==  32 ]; then
       echo "Instance is already exist but its statu is shutting-down"
-    elif [ $x == 64 ];
+    elif [ $x == 64 ]; then
       echo "Instance is already exist but its status is stopping"
-    elif [ $x == 80 ];
+    elif [ $x == 80 ]; then
       echo "Instance is already exist but its status is stopped"
+      fi
   done
 fi
 
