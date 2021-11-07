@@ -3,42 +3,40 @@
 source components/common.sh
 
 Print "Downloading"
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>"$LOG"
 Stat $?
 
 Print "Installing Mongodb"
 yum install -y mongodb-org &>>"$LOG"
 Stat $?
 
-Print "Enabling Mongod service"
-systemctl enable mongod &>>"$LOG"
+Print "Update MongoDB Config"
+sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>"$LOG"
 Stat $?
 
 Print "Starting mongodb service"
-systemctl start mongod &>>"$LOG"
+systemctl restart mongod &>>"$LOG"
 systemctl --type=service | grep mongod &>>"$LOG"
 Stat $?
 
 Print "checking service status"
 mstatus=$(systemctl is-active mongod.service)
-Service $mstatus
+Service "$mstatus"
 
+Print "Enabling Mongod service"
+systemctl enable mongod &>>"$LOG"
+Stat $?
 
-exit
+Print "Download Schema"
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>"$LOG"
+Stat $?
 
-#Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
-#Config file: /etc/mongod.conf
+Print "Extract Schema"
+unzip -o -d /tmp /tmp/mongodb.zip &>>"$LOG"
+Stat $?
 
-#then restart the service
-
-# systemctl restart mongod
-Every Database needs the schema to be loaded for the application to work.
-Download the schema and load it.
-
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
-
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+Print "Loading Schema"
+cd /tmp/mongodb-main
+mongo < catalogue.js &>>"$LOG"
+mongo < users.js &>>"$LOG"
+Stat $?
