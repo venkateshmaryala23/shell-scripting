@@ -27,3 +27,14 @@ else
   done
 fi
 
+IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=S1 |jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | xargs)
+
+sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADRESS/${IP}/" record.json >/tmp/record.json
+
+aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/record.json
+
+#sed -e "s/UPSERT/CREATE/" -e "s/DNSNAME/test.roboshop.internal/" -e "s/IPADRESS/5.5.5.5/" record.json >/tmp/create_record.json
+
+#aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/create_record.json
+
+
