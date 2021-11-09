@@ -40,7 +40,14 @@ Print "Fix App Permissions"
 chown -R roboshop:roboshop /home/roboshop
 Stat $?
 
+Print "Update DNS records in SystemD Config"
+sed -i -e 's/MONGO_DNSNAME/catalogue.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>"$LOG"
+Stat $?
+
+Print "Copy SystemD file"
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-# systemctl daemon-reload
-# systemctl start catalogue
-# systemctl enable catalogue
+Stat $?
+
+Print "System Catalogue Service"
+systemctl daemon-reload &>>"$LOG" && systemctl start catalogue &>>"$LOG" && systemctl enable catalogue &>>"$LOG"
+Stat $?
