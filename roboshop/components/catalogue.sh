@@ -40,8 +40,7 @@ Print "Fix App Permissions"
 chown -R roboshop:roboshop /home/roboshop
 Stat $?
 
-
-# mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 # systemctl daemon-reload
 # systemctl start catalogue
 # systemctl enable catalogue
