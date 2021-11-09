@@ -37,4 +37,4 @@ aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO -
 
 #aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/create_record.json
 
-
+#https://github.com/venkateshmaryala23/shell-scripting.git
