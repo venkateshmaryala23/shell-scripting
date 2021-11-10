@@ -54,7 +54,8 @@ Stat $?
 
 Print "Checking DB Connection from APP"
 STATE=$(curl -s localhost:8080/health | jq .mongo)
-if[ $STATE == "true" ]; then
+echo status = $STATE
+if[ "$STATE" == "true" ]; then
   Stat 0
 else
   Stat 1
