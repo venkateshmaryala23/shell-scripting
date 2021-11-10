@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
 
-cat $0 | grep Print
+cat $0 | grep ^Print
 
 exit
 
