@@ -1,6 +1,10 @@
 #!/bin/bash
 source components/common.sh
 
+echo $0
+
+exit
+
 Print "Installing nodejs"
 yum install nodejs make gcc-c++ -y &>>"$LOG"
 Stat $?
