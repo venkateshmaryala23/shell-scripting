@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
 
-echo $0
+cat $0
 
 exit
 
