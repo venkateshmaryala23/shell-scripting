@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
 
-MLINE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' | sort | tail -1)
+MSPACE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' | sort | tail -1)
 
 Print "Installing nodejs"
 yum install nodejs make gcc-c++ -y &>>"$LOG"
