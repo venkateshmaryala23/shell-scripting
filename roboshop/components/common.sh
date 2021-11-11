@@ -4,7 +4,7 @@ Print() {
   LSPACE=$(echo $1 | awk '{print length}')
   SPACE=$(($MSPACE-$LSPACE))
   while [ $SPACE -gt 0 ]; do
-     SPACES="$SPACES$(echo '')"
+     SPACES="$SPACE$(echo '')"
      SPACE=$((SPACE-1))
   done
   echo -n -e "\e[1m$1${SPACES}\e[0m ....."
