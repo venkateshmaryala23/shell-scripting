@@ -3,7 +3,11 @@
 Print() {
   LSPACE=$(echo $1 | awk '{print length}')
   SPACE=$(($MSPACE-$LSPACE))
-  echo -n -e "\e[1m$1${SPACE}\e[0m ....."
+  while [ $SPACE -gt 0 ]; do
+     SPACES="$SPACES$(echo '')"
+     SPACE=$((SPACE-1))
+  done
+  echo -n -e "\e[1m$1${SPACES}\e[0m ....."
   echo -e "\n\e[36m==============================$1==============================\e[0m" >>$LOG
 }
 
