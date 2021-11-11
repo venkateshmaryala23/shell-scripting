@@ -4,7 +4,7 @@ Print() {
   LSPACE=$(echo $1 | awk '{print length}')
   SPACE=$(($MSPACE-$LSPACE))
   while [ $SPACE -gt 0 ]; do
-     SPACES="$SPACES$(echo '')"
+     SPACES="$SPACES$(echo ' ')"
      echo $SPACES
      SPACE=$(($SPACE-1))
   done
