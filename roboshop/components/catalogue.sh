@@ -6,7 +6,6 @@ MSPACE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' |
 Print "Installing nodejs"
 yum install nodejs make gcc-c++ -y &>>"$LOG"
 Stat $?
-exit 143
 
 Print "Adding RoboShop user"
 id roboshop &>>"$LOG"
