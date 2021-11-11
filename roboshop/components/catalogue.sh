@@ -3,6 +3,7 @@ source components/common.sh
 
 MLINE=$(cat $0 | grep ^Print | awk -F  '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
 
+echo $MLINE
 exit
 
 Print "Installing nodejs"
