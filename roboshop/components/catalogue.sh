@@ -25,7 +25,7 @@ Print "Remove Old Content"
 rm -rf /home/roboshop/catalogue &>>"$LOG"
 Stat $?
 
-Print "Extracting  Catalogue"
+Print "Extracting Catalogue"
 unzip -o -d /home/roboshop /tmp/catalogue.zip &>>"$LOG"
 Stat $?
 
