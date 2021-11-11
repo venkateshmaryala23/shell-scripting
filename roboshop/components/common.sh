@@ -2,7 +2,7 @@
 
 Print() {
   LSPACE=$(echo $1 | awk '{print length}')
-  SPACES=${$MSPACE-$LSPACE}
+  SPACES=$(($MSPACE-$LSPACE))
   echo $SPACES
     exit 145
   echo -n -e "\e[1m$1${SPACES}\e[0m ....."
