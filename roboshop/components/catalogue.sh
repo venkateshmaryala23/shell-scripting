@@ -3,14 +3,6 @@ source components/common.sh
 
 MLINE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' | sort | tail -1)
 
-echo  $MLINE
-exit
-#echo "cat $0 | grep ^Print"
-#MLINE=$(cat $0 | grep ^Print | awk -F  '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
-
-#echo $MLINE
-#exit
-
 Print "Installing nodejs"
 yum install nodejs make gcc-c++ -y &>>"$LOG"
 Stat $?
