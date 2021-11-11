@@ -1,6 +1,9 @@
 #!/bin/bash
 source components/common.sh
 
+cat $0 | grep ^Print
+
+exit
 #echo "cat $0 | grep ^Print"
 #MLINE=$(cat $0 | grep ^Print | awk -F  '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
 
