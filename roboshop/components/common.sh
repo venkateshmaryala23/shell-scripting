@@ -36,6 +36,12 @@ Service(){
 LOG=/tmp/roboshop.log
 rm -f $LOG
 
+DOWNLOAD(){
+  Print "Download $COMPONENT_NAME data"
+  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>"$LOG"
+  Stat $?
+}
+
 NODEJS(){
   Print "Installing nodjs"
   yum install nodejs make gcc-c++ -y &>>"$LOG"
@@ -51,9 +57,7 @@ NODEJS(){
   fi
   Stat $?
 
-  Print "Download $COMPONENT_NAME data"
-  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>"$LOG"
-  Stat $?
+
 
   Print "Remove old content"
   rm -rf /home/roboshop/${COMPONENT}
