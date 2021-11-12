@@ -13,13 +13,17 @@ if [ $? -eq 0 ]; then
   echo roboshop user already exists
 else
    useradd roboshop &>>"$LOG"
-   echo roboshop  userd created &>>"$LOG"
+   echo roboshop  user created &>>"$LOG"
 fi
 Stat $?
 
 #So let's switch to the roboshop user and run the following commands.
 Print "Download User data"
 curl -s -L -o /tmp/user.zip "https://github.com/roboshop-devops-project/user/archive/main.zip" &>>"$LOG"
+Stat $?
+
+Print "Remove old content"
+rm -rf /home/roboshop/user
 Stat $?
 
 Print "Extracting userdata"
@@ -33,7 +37,7 @@ Stat $?
 
 Print "Install nodejs dependecies"
 cd /home/roboshop/user
-npm install &>>"$LOG"
+npm install --unsafe-perm &>>"$LOG"
 Stat $?
 
 Print "Fix App permissions"
