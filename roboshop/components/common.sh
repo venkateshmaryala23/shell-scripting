@@ -51,7 +51,6 @@ NODEJS(){
   fi
   Stat $?
 
-  #So let's switch to the roboshop user and run the following commands.
   Print "Download $COMPONENT_NAME data"
   curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>"$LOG"
   Stat $?
@@ -77,6 +76,8 @@ NODEJS(){
   Print "Fix App permissions"
   chown -R roboshop:roboshop /home/roboshop/ &>>"$LOG"
   Stat $?
+
+exit 123
 
   Print "Update DNS records in SystemD Config"
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>"$LOG"
