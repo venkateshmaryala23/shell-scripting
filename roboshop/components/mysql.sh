@@ -29,7 +29,7 @@ if [ $? -ne 0 ]; then
   Stat $?
   fi
 
-DOWNLOAD
+DOWNLOAD "/tmp"
 
 # cd /tmp
 # unzip mysql.zip

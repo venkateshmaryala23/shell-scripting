@@ -40,6 +40,9 @@ DOWNLOAD(){
   Print "Download $COMPONENT_NAME data"
   curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>"$LOG"
   Stat $?
+  Print "Extracting userdata for $COMPONENT_NAME"
+  unzip -o -d $1 /tmp/${COMPONENT}.zip &>>"$LOG"
+  Stat $?
 }
 
 NODEJS(){
@@ -57,16 +60,13 @@ NODEJS(){
   fi
   Stat $?
 
-
-
   Print "Remove old content"
   rm -rf /home/roboshop/${COMPONENT}
   Stat $?
 
-  Print "Extracting userdata for $COMPONENT_NAME"
-  #cd /home/roboshop
-  unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>"$LOG"
-  Stat $?
+  DOWNLOAD "/home/roboshop"
+
+
 
   Print "Copy content for $COMPONENT_NAME"
   mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT} &>>"$LOG"
