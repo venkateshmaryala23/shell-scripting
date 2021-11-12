@@ -64,7 +64,7 @@ NODEJS(){
   unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>"$LOG"
   Stat $?
 
-  Print "Copy content for $COMPONENT_NAME "
+  Print "Copy content for $COMPONENT_NAME"
   mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT} &>>"$LOG"
   Stat $?
 
@@ -77,7 +77,7 @@ NODEJS(){
   chown -R roboshop:roboshop /home/roboshop/ &>>"$LOG"
   Stat $?
 
-  Print "Update  $COMPONENT_NAME DNS records in SystemD Config"
+  Print "Update $COMPONENT_NAME DNS records in SystemD Config"
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>"$LOG"
   Stat $?
 
