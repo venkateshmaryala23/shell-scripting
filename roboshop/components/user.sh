@@ -5,7 +5,6 @@ MSPACE=$(cat $0 | grep Print | awk -F '"' '{print $2}' | awk '{print length}' | 
 
 COMPONENT_NAME=User
 COMPONENT=user
-
 NODEJS
-
+CHECK_MONGO_FROM_APP
 
