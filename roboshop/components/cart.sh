@@ -6,3 +6,5 @@ MSPACE=$(cat $0 | grep Print | awk -F '"' '{print $2}' | awk '{print length}' | 
 COMPONENT_NAME=Cart
 COMPONENT=cart
 NODEJS
+CHECK_MONGO_FROM_APP
+
