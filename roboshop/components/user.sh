@@ -13,7 +13,7 @@ if [ $? -eq 0 ]; then
   echo roboshop user already exists
 else
    useradd roboshop &>>"$LOG"
-   echo roboshop  userd created
+   echo roboshop  userd created &>>"$LOG"
 fi
 Stat $?
 
@@ -37,7 +37,7 @@ npm install &>>"$LOG"
 Stat $?
 
 Print "Fix App permissions"
-chown -R roboshop:roboshop /home/roboshop/
+chown -R roboshop:roboshop /home/roboshop/ &>>"$LOG"
 Stat $?
 
 #Now, lets set up the service with systemctl.
