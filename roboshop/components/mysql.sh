@@ -31,7 +31,6 @@ if [ $? -ne 0 ]; then
 
 DOWNLOAD "/tmp"
 
-# cd /tmp
-# unzip mysql.zip
-# cd mysql-main
-# mysql -u root -pRoboShop@1 <shipping.sql
+Print "Load Schema"
+cd /tmp/mysql-main
+mysql -u root -pRoboShop@1 <shipping.sql &>>"$LOG"
