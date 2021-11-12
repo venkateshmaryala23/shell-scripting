@@ -34,3 +34,4 @@ DOWNLOAD "/tmp"
 Print "Load Schema"
 cd /tmp/mysql-main
 mysql -u root -pRoboShop@1 <shipping.sql &>>"$LOG"
+Stat $?
