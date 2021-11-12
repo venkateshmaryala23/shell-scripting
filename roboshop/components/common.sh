@@ -100,3 +100,14 @@ CHECK_MONGO_FROM_APP(){
     Stat 1
   fi
 }
+
+CHECK_REDIS_FROM_APP(){
+  Print "Checking DB Connection from APP"
+  sleep 5
+  STATE=$(curl -s localhost:8080/health | jq .redis)
+  if [ "$STATE" == "true" ]; then
+    Stat 0
+  else
+    Stat 1
+  fi
+}
