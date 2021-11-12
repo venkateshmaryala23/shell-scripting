@@ -3,46 +3,8 @@ source components/common.sh
 
 MSPACE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' | sort | tail -1)
 
-Print "Installing nodjs"
-yum install nodejs make gcc-c++ -y &>>"$LOG"
-Stat $?
-
-Print "Adding Roboshop user"
-id roboshop &>>"$LOG"
-if [ $? -eq 0 ]; then
-  echo roboshop user already exists
-else
-   useradd roboshop &>>"$LOG"
-   echo roboshop  user created &>>"$LOG"
-fi
-Stat $?
-
-#So let's switch to the roboshop user and run the following commands.
-Print "Download User data"
-curl -s -L -o /tmp/user.zip "https://github.com/roboshop-devops-project/user/archive/main.zip" &>>"$LOG"
-Stat $?
-
-Print "Remove old content"
-rm -rf /home/roboshop/user
-Stat $?
-
-Print "Extracting userdata"
-#cd /home/roboshop
-unzip -o -d /home/roboshop /tmp/user.zip &>>"$LOG"
-Stat $?
-
-Print "Copy content"
-mv /home/roboshop/user-main /home/roboshop/user &>>"$LOG"
-Stat $?
-
-Print "Install nodejs dependecies"
-cd /home/roboshop/user
-npm install --unsafe-perm &>>"$LOG"
-Stat $?
-
-Print "Fix App permissions"
-chown -R roboshop:roboshop /home/roboshop/ &>>"$LOG"
-Stat $?
+COMPONENT_NAME=User
+COMPONENT=user
 
 #Now, lets set up the service with systemctl.
 
@@ -50,3 +12,26 @@ Stat $?
 # systemctl daemon-reload
 # systemctl start user
 # systemctl enable user
+
+
+Print "Update DNS records in SystemD Config"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>"$LOG"
+Stat $?
+
+Print "Copy SystemD file"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+Stat $?
+
+Print "System Catalogue Service"
+systemctl daemon-reload &>>"$LOG" && systemctl start catalogue &>>"$LOG" && systemctl enable catalogue &>>"$LOG"
+Stat $?
+
+sleep 5
+
+Print "Checking DB Connection from APP"
+STATE=$(curl -s localhost:8080/health | jq .mongo)
+if [ "$STATE" == "true" ]; then
+  Stat 0
+else
+  Stat 1
+fi
