@@ -24,7 +24,7 @@ NEW_PASSWORD="RoboShop@1"
 echo 'show databases;' |mysql -u root -p"${NEW_PASSWORD}" &>>"$LOG"
 if [ $? -ne 0 ]; then
   Print "changing the Default Password"
-  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${NEW_PASSWORD}';\nuninstall plugin validate_password;" >/tmp/pass.sql
+  echo -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${NEW_PASSWORD}';\nuninstall plugin validate_password;" >/tmp/pass.sql
   mysql -uroot -p "${DEFAULT_PASSWORD}" </tmp/pass.sql &>>"$LOG"
   Stat $?
   fi
