@@ -18,7 +18,18 @@ Print "Start MySQL Service"
 systemctl enable mysqld &>>"$LOG" && systemctl start mysqld &>>"$LOG"
 Stat $?
 
-exit 123
+DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+NEW_PASSWORD="RoboShop@1"
+
+echo 'show databases;' |mysql -u root -p"${NEW_PASSWORD}" &>>"$LOG"
+if [ $? -eq 0 ]; then
+  echo "Password is already changed"
+else
+  echo "Password is not changed"
+fi
+
+exit
+
 Now a default root password will be generated and given in the log file.
 # grep temp /var/log/mysqld.log
 
