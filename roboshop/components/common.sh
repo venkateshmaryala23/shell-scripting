@@ -59,16 +59,16 @@ NODEJS(){
   rm -rf /home/roboshop/${COMPONENT}
   Stat $?
 
-  Print "Extracting userdata"
+  Print "Extracting userdata for $COMPONENT_NAME"
   #cd /home/roboshop
   unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>"$LOG"
   Stat $?
 
-  Print "Copy content"
+  Print "Copy content for $COMPONENT_NAME "
   mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT} &>>"$LOG"
   Stat $?
 
-  Print "Install nodejs dependecies"
+  Print "Install nodejs dependecies for $COMPONENT_NAME"
   cd /home/roboshop/${COMPONENT}
   npm install --unsafe-perm &>>"$LOG"
   Stat $?
@@ -77,17 +77,15 @@ NODEJS(){
   chown -R roboshop:roboshop /home/roboshop/ &>>"$LOG"
   Stat $?
 
-exit 123
-
-  Print "Update DNS records in SystemD Config"
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>"$LOG"
+  Print "Update  $COMPONENT_NAME DNS records in SystemD Config"
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal' /home/roboshop/${COMPONENT}/systemd.service &>>"$LOG"
   Stat $?
 
   Print "Copy SystemD file"
   mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
   Stat $?
 
-  Print "System Catalogue Service"
+  Print "System $COMPONENT_NAME Service"
   systemctl daemon-reload &>>"$LOG" && systemctl start ${COMPONENT} &>>"$LOG" && systemctl enable ${COMPONENT} &>>"$LOG"
   Stat $?
 }
