@@ -6,3 +6,12 @@ MSPACE=$(cat $0 | grep Print | awk -F '"' '{print $2}' | awk '{print length}' | 
 COMPONENT_NAME=Shipping
 COMPONENT=shipping
 MAVEN
+
+sleep 15
+Print "checking DB Connection from App"
+STAT=$(curl -s http://localhost:8080/health)
+if [ "$STAT" == "OK" ]; then
+  Stat 0
+else
+  Stat 1
+fi
