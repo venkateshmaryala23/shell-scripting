@@ -41,10 +41,10 @@ NODEJS(){
   yum install nodejs make gcc-c++ -y &>>"$LOG"
   Stat $?
 
-  Print "Adding Roboshop user" &>>"$LOG"
+  Print "Adding Roboshop user"
   id roboshop &>>"$LOG"
   if [ $? -eq 0 ]; then
-    echo roboshop user already exists
+    echo roboshop user already exists &>>"$LOG"
   else
      useradd roboshop &>>"$LOG"
      echo roboshop  user created &>>"$LOG"
