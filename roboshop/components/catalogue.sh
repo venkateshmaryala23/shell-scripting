@@ -5,12 +5,10 @@ MSPACE=$(cat $0 | grep ^Print | awk -F '"' '{print $2}' | awk '{print length}' |
 
 COMPONENT_NAME=Catalogue
 COMPONENT=catalogue
-
 NODEJS
 
-sleep 5
-
 Print "Checking DB Connection from APP"
+sleep 5
 STATE=$(curl -s localhost:8080/health | jq .mongo)
 if [ "$STATE" == "true" ]; then
   Stat 0
