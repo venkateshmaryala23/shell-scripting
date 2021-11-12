@@ -25,7 +25,7 @@ echo 'show databases;' |mysql -u root -p"${NEW_PASSWORD}" &>>"$LOG"
 if [ $? -ne 0 ]; then
   Print "changing the Default Password"
   echo -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${NEW_PASSWORD}';\nuninstall plugin validate_password;" >/tmp/pass.sql
-  mysql -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql &>>"$LOG"
+  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql &>>"$LOG"
   Stat $?
   fi
 
