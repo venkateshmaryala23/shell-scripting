@@ -9,7 +9,7 @@ MAVEN
 
 
 Print "checking DB Connection from App"
-sleep 15
+sleep 10
 STAT=$(curl -s http://localhost:8080/health)
 if [ "$STAT" == "OK" ]; then
   Stat 0
