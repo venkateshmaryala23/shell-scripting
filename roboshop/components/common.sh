@@ -92,12 +92,14 @@ PYTHON(){
   DOWNLOAD "/home/roboshop" &>>"$LOG"
 
   Print "Install the dependencies"
-  cd /home/roboshop/payment
+  cd /home/roboshop/${COMPONENT}
   pip3 install -r requirements.txt &>>"$LOG"
   Stat $?
 
-  #Update the roboshop user and group id in payment.ini file.
-
+  Print "Update the roboshop user and group id in payment.ini file."
+  USER_ID=$(id -u roboshop)
+  GROUP_ID=$(id -g roboshop)
+  sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" /home/roboshop/${COMPONENT}/${COMPONENT}.ini &>>"$LOG"
   SYSTEMD
 }
 
