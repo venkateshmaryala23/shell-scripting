@@ -25,8 +25,6 @@ Print "Start RabbitMQ"
 systemctl enable rabbitmq-server &>>"$LOG" &&  systemctl start rabbitmq-server &>>"$LOG"
 Stat $?
 
-Create application user
-# rabbitmqctl add_user roboshop roboshop123
-# rabbitmqctl set_user_tags roboshop administrator
-# rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+Print "Setup application user"
+rabbitmqctl add_user roboshop roboshop123 &>>"$LOG" &&  rabbitmqctl set_user_tags roboshop administrator &>>"$LOG" && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>"$LOG"
 
