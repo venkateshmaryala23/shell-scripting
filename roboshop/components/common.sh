@@ -89,11 +89,11 @@ PYTHON(){
   Stat $?
 
   ROBOSHOP_USER
-  DOWNLOAD "/home/roboshop"
+  DOWNLOAD "/home/roboshop" &>>"$LOG"
 
   Print "Install the dependencies"
   cd /home/roboshop/payment
-  pip3 install -r requirements.txt
+  pip3 install -r requirements.txt &>>"$LOG"
   Stat $?
 
   #Update the roboshop user and group id in payment.ini file.
