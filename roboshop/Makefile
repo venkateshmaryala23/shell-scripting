@@ -33,7 +33,7 @@ mysql: ## Setup MySQL component
 redis: ## Setup Redis component
 	@bash components/redis.sh
 
-rabbbitmq: ## Setup Rabbitmq component
+rabbitmq: ## Setup Rabbitmq component
 	@bash components/rabbitmq.sh
 
 mongodb: ## Setup Mongodb component
