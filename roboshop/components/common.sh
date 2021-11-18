@@ -89,7 +89,7 @@ PYTHON(){
   Stat $?
 
   ROBOSHOP_USER
-  DOWNLOAD "/home/roboshop" &>>"$LOG"
+  DOWNLOAD "/home/roboshop"
 
   Print "Install the dependencies"
   cd /home/roboshop/${COMPONENT}
