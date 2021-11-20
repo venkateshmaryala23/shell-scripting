@@ -6,7 +6,6 @@ DELETE() {
   echo $IP
   if [ "$IP" == "" ]; then
     echo "There is no $1 dns record to delete"
-   exit
   else
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
   fi
