@@ -4,7 +4,7 @@ CREATE() {
      if [ $COUNT -eq 0 ]; then
            #echo "Creating Instance - $1"
            aws ec2 run-instances --image-id ami-0855cab4944392d0a --instance-type t3.micro --security-group-ids sg-07624ce53dbdfb0f8 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" | jq &>/dev/null
-     else
+     #else
           # echo "$1 Instance already exist"
      fi
      #echo "==========================="
