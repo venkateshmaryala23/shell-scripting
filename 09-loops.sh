@@ -15,3 +15,11 @@ for fruit in apple bananana arrage peach ; do
   echo Fruit name is $fruit
 done
 
+echo -n "checking connection on port 22 for host $1 "
+while true ; do
+  nc -w 1 -z $1 22 &>/dev/null
+  if [ $? -eq 0 ]; then
+    break
+  fi
+  echo -n '.'
+done
