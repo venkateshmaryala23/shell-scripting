@@ -23,6 +23,8 @@ if [ "$1" == "all" ]; then
     CREATE $component
   done
 else
+  echo $i
+  exit
   CREATE $i
 fi
 
