@@ -12,21 +12,21 @@ DELETE() {
   #echo $ID
 
   if [ -z "$IP" ]; then
-    echo "\e[1;33mThere is no dns record for $1 to delete\e[0m"
+    echo -e "\e[1;33mThere is no dns record for $1 to delete\e[0m"
   elif [ "$recordset" == "$current_dnsname" ];then
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
     if [ $? == 0 ]; then
-      echo "\e[1;33mremoved dns record for $1\e[0m"
+      echo -e "\e[1;33mremoved dns record for $1\e[0m"
     fi
   else
-    echo "\e[1;33mDNS record already removed!!!No need to do again\e[0m"
+    echo -e "\e[1;33mDNS record already removed!!!No need to do again\e[0m"
   fi
 
   sleep 5
   if [ $COUNT -ne 0 ]; then
 
     aws ec2 terminate-instances --instance-ids $ID
-    echo "\e[1;33mDeleted Instance - $ID ---$IP---$current_dnsname"
+    echo -e "\e[1;33mDeleted Instance - $ID ---$IP---$current_dnsname"
   else
     echo -e "\e[1;33m$1 Instance not availble\e[0m"
     return
@@ -36,7 +36,7 @@ DELETE() {
 if [ "$1" == "all" ]; then
   ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
   for component in ${ALL[*]}; do
-    echo "\e[1;33mDeleting Instance - $component\e[0m"
+    echo -e "\e[1;33mDeleting Instance - $component\e[0m"
     DELETE $component
   done
 else
