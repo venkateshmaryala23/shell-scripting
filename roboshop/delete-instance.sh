@@ -19,7 +19,7 @@ DELETE() {
       echo removed dns record for $1
     fi
   else
-    echo "DNS record already removed"
+    echo "DNS record already removed!!!No need to do again"
   fi
 
   sleep 5
