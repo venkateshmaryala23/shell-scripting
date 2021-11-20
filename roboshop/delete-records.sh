@@ -7,7 +7,7 @@ DELETE_RECORD (){
     exit
    # if [ "$1.roboshop.internal" ==  ]; then
         
-    fi
+    #fi
   done
 
 }
