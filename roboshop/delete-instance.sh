@@ -8,7 +8,7 @@ DELETE() {
   echo $recordset
   echo $IP
   echo $ID
-  exit
+
   if [ -z "$IP" ]; then
     echo "There is no $1 dns record to delete"
   else
