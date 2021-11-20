@@ -19,7 +19,7 @@ CREATE () {
         elif [ $x == 64 ]; then
           echo "\e[1;32m$1 Instance is already exist but its status is stopping \e[0m"
         elif [ $x == 80 ]; then
-          echo "\e[1;32m$1 Instance is already exist but the instance is stopped \e[0m""
+          echo "\e[1;32m$1 Instance is already exist but the instance is stopped \e[0m"
         fi
     done
   fi
