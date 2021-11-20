@@ -1,8 +1,8 @@
 {
-  "Comment": "Update record to reflect new IP address for a system ",
+  "Comment": "DELETE record to along with IP address for a system ",
   "Changes": [
     {
-      "Action": "UPSERT",
+      "Action": "DELETE",
       "ResourceRecordSet": {
         "Name": "DNSNAME",
         "Type": "A",
