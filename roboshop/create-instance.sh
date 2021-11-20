@@ -2,10 +2,10 @@
 CREATE() {
      COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
      if [ $COUNT -eq 0 ]; then
-           echo "Creating Instance - $1"
+           #echo "Creating Instance - $1"
            aws ec2 run-instances --image-id ami-0855cab4944392d0a --instance-type t3.micro --security-group-ids sg-07624ce53dbdfb0f8 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" | jq &>/dev/null
      else
-           echo "$1 Instance already exist"
+          # echo "$1 Instance already exist"
      fi
      #echo "==========================="
      sleep 5
@@ -19,7 +19,7 @@ CREATE() {
 if [ "$1" == "all" ]; then
   ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
   for component in ${ALL[*]};do
-    #echo "Creating Instance - $component"
+    echo "Creating Instance - $component"
     CREATE $component
   done
 fi
