@@ -4,7 +4,7 @@ CREATE() {
 
   if [ $COUNT -eq 0 ]; then
 
-    aws ec2 run-instances LaunchTemplateId=lt-0cdfaec7494d1ef5e,Version=2 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=$1}]" | jq &>/dev/null
+   aws ec2 run-instances --launch-template LaunchTemplateId=lt-0cdfaec7494d1ef5e,Version=2 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$1}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=$1}]" | jq &>/dev/null
     echo "Created spot Instance - $1"
   else
     echo -e "\e[1;33m$1 Instance already exist\e[0m"
