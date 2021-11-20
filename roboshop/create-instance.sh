@@ -11,9 +11,9 @@ CREATE() {
      sleep 5
      IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | xargs)
      sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADRESS/${IP}/" record.json >/tmp/record.json
-     echo "updating dns record for $1 instance"
+     #echo "updating dns record for $1 instance"
      aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/record.json | jq &>/dev/null
-     echo "==========================="
+     #echo "==========================="
 }
 
 if [ "$1" == "all" ]; then
