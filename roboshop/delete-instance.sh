@@ -6,8 +6,8 @@ DELETE() {
   sed -e "s/DNSNAME/$1.roboshop.internal./" -e "s/IPADRESS/${IP}/" delete_record.json >/tmp/drecord.json
   recordset=$(aws route53 list-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --query "ResourceRecordSets[?Name == '$1.roboshop.internal.']" | jq ".[].Name" | xargs)
   current_dnsname=$(cat /tmp/drecord.json | jq ".Changes[].ResourceRecordSet.Name" |xargs)
-  echo $recordset
-  echo $current_dnsname
+  #echo $recordset
+  #echo $current_dnsname
   # echo $IP
   #echo $ID
 
@@ -18,6 +18,8 @@ DELETE() {
     if [ $? == 0 ]; then
       echo removed dns record for $1
     fi
+  else
+    echo "DNS record already removed"
   fi
 
   sleep 5
