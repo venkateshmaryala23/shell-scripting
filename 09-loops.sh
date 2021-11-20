@@ -5,6 +5,6 @@
 
 a=10
 while [ $a -gt 0 ];do
-  echo while loop
+  echo while loop $a output
   a=$(($a-1))
 done
