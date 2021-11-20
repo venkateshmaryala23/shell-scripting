@@ -5,10 +5,10 @@ DELETE() {
   ID=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].InstanceId" | xargs)
   sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADRESS/${IP}/" delete_record.json >/tmp/drecord.json
   recordset=$(aws route53 list-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --query "ResourceRecordSets[?Type == 'A'].Name" | xargs)
-  current_dnsname = $(cat /tmp/drecord.json | jq ".Changes[].ResourceRecordSet.Name" |xargs)
+  current_dnsname=$(cat /tmp/drecord.json | jq ".Changes[].ResourceRecordSet.Name" |xargs)
  # echo $recordset
-  echo $IP
-  echo $ID
+ # echo $IP
+  #echo $ID
 
   if [ -z "$IP" ]; then
     echo "There is no dns record for $1 to delete"
