@@ -19,6 +19,7 @@ echo -n "checking connection on port 22 for host $1 "
 while true ; do
   nc -w 1 -z $1 22 &>/dev/null
   if [ $? -eq 0 ]; then
+    echo "port 22 identified!!!!"
     break
   fi
   echo -n '.'
