@@ -3,7 +3,7 @@ DELETE() {
   COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 | jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
   IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | xargs)
   ID=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].InstanceId" | xargs)
-  sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADRESS/${IP}/" delete_record.json >/tmp/drecord.json
+  sed -e "s/DNSNAME/$1.roboshop.internal./" -e "s/IPADRESS/${IP}/" delete_record.json >/tmp/drecord.json
   recordset=$(aws route53 list-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --query "ResourceRecordSets[?Name == '$1.roboshop.internal.']" | jq ".[].Name" | xargs)
   current_dnsname=$(cat /tmp/drecord.json | jq ".Changes[].ResourceRecordSet.Name" |xargs)
   echo $recordset
@@ -14,7 +14,7 @@ DELETE() {
 
   if [ -z "$IP" ]; then
     echo "There is no dns record for $1 to delete"
-  elif [ "$recordset" == "$current_dnsname"];then
+  elif [ "$recordset" == "$current_dnsname" ];then
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
     if [ $? == 0 ]; then
       echo removed dns record for $1
