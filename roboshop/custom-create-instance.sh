@@ -3,6 +3,7 @@ if [ "$1" == "all" ]; then
   ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
   for component in ${ALL[*]}; do
     echo "Creating instance - $component"
+    "$1" = $component
 
     COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
 
