@@ -4,6 +4,10 @@ DELETE_RECORD (){
   sed -i -e 's/.",//' -e 's/"//' -e 's/."//' /tmp/recordlist.txt
   for recordset in `cat /tmp/recordlist.txt`;do
     echo $recordset
+    exit
+   # if [ "$1.roboshop.internal" ==  ]; then
+        
+    fi
   done
 
 }
