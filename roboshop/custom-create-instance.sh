@@ -1,5 +1,10 @@
 #!/bin/bash
-
+if [ "$1" == "all" ]; then
+  ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
+  for component in ${ALL[*]}; do
+    echo "Creating instance - $component"
+  done
+fi
 COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
 
 ec2_state_code=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].State.Code")
@@ -25,7 +30,7 @@ else
       echo "Instance is already exist but the instance is stopped"
       fi
   done
-fi
+ fi
 
 IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=S1 |jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null | xargs)
 
