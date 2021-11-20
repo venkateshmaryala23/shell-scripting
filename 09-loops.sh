@@ -9,3 +9,9 @@ while [ $a -gt 0 ];do
   sleep 5
   a=$(($a-1))
 done
+
+#syntx: for var in items ; do commands ;done
+for fruit in apple bananana arrage peach ; do
+  echo Fruit name is $fruit
+done
+
