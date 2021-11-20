@@ -23,6 +23,6 @@ if [ "$1" == "all" ]; then
     CREATE $component
   done
 fi
-exit
+
 
 
