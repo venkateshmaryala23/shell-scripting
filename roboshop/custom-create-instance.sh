@@ -14,9 +14,10 @@ CREATE () {
      for x in $ec2_state_code;do
         #echo $x
         if [ $x == 0 ]; then
-          echo "$1 Instance is exists but it is in pending status"
+          #"\e[1;32mSUCCESS\e[0m"
+          echo "\e[1;32m$1 Instance is exists but it is in\e[0m pending status"
         elif [ $x == 16 ]; then
-          echo  "$1 Instance is already exists, It is in running state"
+          echo  "\e[1;32m$1 Instance is already exists, It is in\e[0m running state"
         elif [ $x ==  32 ]; then
           echo "$1 Instance is already exist but its statu is shutting-down"
         elif [ $x == 64 ]; then
