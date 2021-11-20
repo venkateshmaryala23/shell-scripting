@@ -16,7 +16,7 @@ CREATE() {
 if [ "$1" == "all" ]; then
   ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
   for component in ${ALL[*]};do
-    echo "Creating Instance - $component"
+    #echo "Creating Instance - $component"
     CREATE $component
   done
 fi
