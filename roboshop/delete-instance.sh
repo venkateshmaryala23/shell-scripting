@@ -5,7 +5,7 @@ DELETE() {
   sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADRESS/${IP}/" delete_record.json >/tmp/drecord.json
   echo $IP
   exit
-  if [  ]; then
+  if [ -z "$IP" ]; then
     There is no $1 dns record to delete
   else
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
