@@ -8,8 +8,7 @@ DELETE() {
   current_dnsname=$(cat /tmp/drecord.json | jq ".Changes[].ResourceRecordSet.Name" |xargs)
   echo $recordset
   echo $current_dnsname
-  exit
- # echo $IP
+  # echo $IP
   #echo $ID
 
   if [ -z "$IP" ]; then
