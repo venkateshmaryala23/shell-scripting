@@ -14,15 +14,15 @@ CREATE () {
      for x in $ec2_state_code;do
         #echo $x
         if [ $x == 0 ]; then
-          echo "Instance is exists but it is in pending status"
+          echo "$1 Instance is exists but it is in pending status"
         elif [ $x == 16 ]; then
-            echo  "Instance is already exists, It is in running state"
+          echo  "$1 Instance is already exists, It is in running state"
         elif [ $x ==  32 ]; then
-            echo "Instance is already exist but its statu is shutting-down"
+          echo "$1 Instance is already exist but its statu is shutting-down"
         elif [ $x == 64 ]; then
-            echo "Instance is already exist but its status is stopping"
+          echo "$1 Instance is already exist but its status is stopping"
         elif [ $x == 80 ]; then
-            echo "Instance is already exist but the instance is stopped"
+          echo "$1 Instance is already exist but the instance is stopped"
         fi
     done
   fi
@@ -33,17 +33,17 @@ CREATE () {
   echo "updating dns record for $1 instance"
   aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/record.json
 
-    #sed -e "s/UPSERT/CREATE/" -e "s/DNSNAME/test.roboshop.internal/" -e "s/IPADRESS/5.5.5.5/" record.json >/tmp/create_record.json
+  #sed -e "s/UPSERT/CREATE/" -e "s/DNSNAME/test.roboshop.internal/" -e "s/IPADRESS/5.5.5.5/" record.json >/tmp/create_record.json
 
-    #aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/create_record.json
+  #aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/create_record.json
 
-    #https://github.com/venkateshmaryala23/shell-scripting.git
+  #https://github.com/venkateshmaryala23/shell-scripting.git
 }
 
 if [ "$1" == "all" ]; then
   ALL=(frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment)
   for component in ${ALL[*]}; do
-    echo "Creating instance - $component"
+    #echo "Creating instance - $component"
     CREATE $component
   done
 fi
