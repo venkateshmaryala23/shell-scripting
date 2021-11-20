@@ -1,5 +1,6 @@
 #!/bin/bash
 CREATE() {
+     echo $1
      COUNT=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 |jq ".Reservations[].Instances[].PrivateIpAddress"| grep -v null | wc -l)
      if [ $COUNT -eq 0 ]; then
            #echo "Creating Instance - $1"
