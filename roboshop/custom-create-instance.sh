@@ -17,7 +17,7 @@ CREATE () {
           #"\e[1;32mSUCCESS\e[0m"
           echo "\e[1;32m$1 Instance is exists but it is in\e[0m" pending status
         elif [ $x == 16 ]; then
-          echo  "\e[1;32m$1 Instance is already exists, It is in\e[0m" running state
+          echo  -e "\e[1;32m$1 Instance is already exists, It is in\e[0m" running state
         elif [ $x ==  32 ]; then
           echo "$1 Instance is already exist but its statu is shutting-down"
         elif [ $x == 64 ]; then
