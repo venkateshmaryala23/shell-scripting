@@ -22,5 +22,5 @@ if [ "$1" == "all" ]; then
     DELETE $component
   done
 else
-   CREATE $1
+   DELETE $1
 fi
