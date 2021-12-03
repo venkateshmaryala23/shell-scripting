@@ -14,9 +14,10 @@ DELETE() {
 # echo $DNS_IP
 
   if [ -z "$IP" ] || [-z "$DNS_IP"]; then
-      echo echo $DNS_IP
+      echo  $DNS_IP
+       echo -e "\e[1;33mThere is no dns record for $1 to delete\e[0m"
       exit 123
-      echo -e "\e[1;33mThere is no dns record for $1 to delete\e[0m"
+
   elif [ "$recordset" == "$current_dnsname" ];then
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
     if [ $? == 0 ]; then
