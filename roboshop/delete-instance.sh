@@ -15,11 +15,12 @@ DELETE() {
 
   if [ -z "$IP" ] && [ -z "$DNS_IP" ]; then
      echo -e "\e[1;33mThere is no dns record existed for $1 to delete\e[0m"
-  elif [ -z "$DNS_IP" ]; then
-      sed -e "s/DNSNAME/$1.roboshop.internal./" -e "s/IPADRESS/${DNS_IP}/" delete_record.json >/tmp/drecord.json
-      aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
-      echo  "\e[1;33m no instance there but dns record existed so deleting dns for $1\e[0m"
-  elif [ "$recordset" == "$current_dnsname" ];then
+ # elif [ -z "$DNS_IP" ]; then
+ #     sed -e "s/DNSNAME/$1.roboshop.internal./" -e "s/IPADRESS/${DNS_IP}/" delete_record.json >/tmp/drecord.json
+  #    aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
+   #   echo  "\e[1;33m no instance there but dns record existed so deleting dns for $1\e[0m"
+  elif [ "$recordset" == "$current_dnsname" ] && [ -z "$DNS_IP" ] ;then
+    sed -e "s/DNSNAME/$1.roboshop.internal./" -e "s/IPADRESS/${DNS_IP}/" delete_record.json >/tmp/drecord.json
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
     if [ $? == 0 ]; then
       echo -e "\e[1;33mremoved dns record for $1\e[0m"
