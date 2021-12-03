@@ -11,9 +11,11 @@ DELETE() {
   # echo $IP
   #echo $ID
   DNS_IP=$(aws route53 list-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --query "ResourceRecordSets[?Name == '$1.roboshop.internal.']" | jq ".[].ResourceRecords[].Value"|grep -v null |xargs)
- echo $DNS_IP
-exit
+# echo $DNS_IP
+
   if [ -z "$IP" ] || [-z "$DNS_IP"]; then
+      echo echo $DNS_IP
+      exit 123
       echo -e "\e[1;33mThere is no dns record for $1 to delete\e[0m"
   elif [ "$recordset" == "$current_dnsname" ];then
     aws route53 change-resource-record-sets --hosted-zone-id Z05238653F1UHIRHF2JKO --change-batch file:///tmp/drecord.json | jq &>/dev/null
