@@ -46,4 +46,6 @@ echo -e "\e[36mText in Cyan color"
 echo -e "\e[46;5;198;1mText in thick green color\e[0m"
 echo -e "normal color"
 
+#update
+
 
